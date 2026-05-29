@@ -1,0 +1,32 @@
+{
+  "expo": {
+    "name": "FF7 Chronicle",
+    "slug": "ff7-chronicle-mobile",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/icon.png",
+    "userInterfaceStyle": "dark",
+    "splash": {
+      "image": "./src/assets/icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#030610"
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "com.joysun.ff7chronicle"
+    },
+    "android": {
+      "package": "com.joysun.ff7chronicle"
+    },
+    "extra": {
+      "apiBaseUrl": "",
+      "eas": {
+        "projectId": "9b7100db-4476-4417-a475-bfd8eea3d23c"
+      }
+    },
+    "owner": "js3888-shunshuns-organization"
+  }
+}
