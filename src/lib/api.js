@@ -1,4 +1,4 @@
-const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL || '';
+const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL || 'https://ff7-chronicle-ghfyyipyc-joy-s-projects25.vercel.app';
 const USE_MOCK = process.env.EXPO_PUBLIC_USE_MOCK === 'true';
 
 export async function callChatAPI(systemPrompt, messages) {
