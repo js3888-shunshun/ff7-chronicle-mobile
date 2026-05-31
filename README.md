@@ -49,6 +49,29 @@ Available as a **web app** and an **Android APK**.
   </tr>
 </table>
 
+**Story Finale & Review**
+
+<table>
+  <tr>
+    <td align="center" width="25%">
+      <img src="demo%20pictures/main%20story%20ending.png" width="160"/><br/>
+      <sub><b>Finale narration</b><br/>The AI writes a cinematic closing passage — long-form prose that ties together every choice you made</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="demo%20pictures/ending%20choices.jpg" width="160"/><br/>
+      <sub><b>Choices log</b><br/>Every decision you made, numbered in order — a full record of how your story unfolded</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="demo%20pictures/ending%20novel.png" width="160"/><br/>
+      <sub><b>Novel view</b><br/>The raw scene-by-scene transcript: narration, dialogue, and player actions formatted as a readable story log</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="demo%20pictures/ending%20dimensions.png" width="160"/><br/>
+      <sub><b>Character dimensions</b><br/>The AI analyzes your playstyle and generates a personality profile — MBTI, alignment, agency style, risk level — based purely on the choices you made</sub>
+    </td>
+  </tr>
+</table>
+
 **Group Chat — Seventh Heaven**
 
 <table>
