@@ -13,11 +13,60 @@ Available as a **web app** and an **Android APK**.
 
 ---
 
-## Screenshots & Demo
+## Screenshots
 
-| Start | Main Story | Group Chat |
-|-------|-----------|------------|
-| Enter your name, choose your language | AI-generated scenes with narration, dialogue, and choices | Real-time character replies, memory, relationship system |
+**Getting started**
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="demo%20pictures/choose%20name.jpg" width="195"/><br/>
+      <sub><b>Enter your name</b><br/>Pick a language, type your name, and step into Midgar as yourself</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="demo%20pictures/start%20the%20game.jpg" width="195"/><br/>
+      <sub><b>Choose your path</b><br/>Launch the main story or jump straight into the group chat</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="demo%20pictures/connecting%20to%20lifestream.jpg" width="195"/><br/>
+      <sub><b>Connecting to the Lifestream…</b><br/>AI is generating your unique opening scene — every run is different</sub>
+    </td>
+  </tr>
+</table>
+
+**Main Story — Gold Saucer**
+
+<table>
+  <tr>
+    <td align="center" width="50%">
+      <img src="demo%20pictures/main%20story%20plot.jpg" width="240"/><br/>
+      <sub><b>Cinematic narration</b><br/>The narrator sets the scene with typewriter text. Character portraits show who's present.</sub>
+    </td>
+    <td align="center" width="50%">
+      <img src="demo%20pictures/main%20story%20choice.jpg" width="240"/><br/>
+      <sub><b>Choose your action</b><br/>3 AI-generated options that fit the moment, plus one free-text slot for anything you want to say or do</sub>
+    </td>
+  </tr>
+</table>
+
+**Group Chat — Seventh Heaven**
+
+<table>
+  <tr>
+    <td align="center" width="33%">
+      <img src="demo%20pictures/chat%201.jpg" width="195"/><br/>
+      <sub><b>Daily life</b><br/>Each character replies in their own voice — Tifa's wiping the bar, Cloud's watching the sunset, Barret's fixing his arm</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="demo%20pictures/chat%203.jpg" width="195"/><br/>
+      <sub><b>Relationship-aware replies</b><br/>Set Cloud as your lover and watch the whole group react — Cloud: "I'd let you if you were here." Barret: "Damn it, now I gotta hug somebody too."</sub>
+    </td>
+    <td align="center" width="33%">
+      <img src="demo%20pictures/chat%202.jpg" width="195"/><br/>
+      <sub><b>They remember you</b><br/>Tell them you just graduated from Cornell — Cloud keeps it brief, Aerith picks flowers, Barret puts drinks on the table</sub>
+    </td>
+  </tr>
+</table>
 
 ---
 
