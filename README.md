@@ -1,9 +1,9 @@
-# FF7 Chronicle — Mobile
+# FF7 Chronicle Mobile
 
 > *"The Lifestream is speaking. Can you hear it?"*
-> *— Aerith*
+> *Aerith*
 
-A text-based interactive game set in the Final Fantasy VII universe. You play as yourself, step into Midgar, and make choices that shape the story — while Cloud, Tifa, Aerith, Zack, Barret, and Sephiroth react to everything you do.
+A text-based interactive game set in the Final Fantasy VII universe. You play as yourself, step into Midgar, and make choices that shape the story, while Cloud, Tifa, Aerith, Zack, Barret, and Sephiroth react to everything you do.
 
 There are two modes. The main story runs up to 9 acts, with an AI narrator writing each scene from scratch and a personalized finale at the end. The group chat puts you in a simulated messaging group with all six characters, who reply in their own voices, remember what you've talked about, and respond differently depending on your relationship with each of them.
 
@@ -32,7 +32,7 @@ Runs as a web app and as a standalone Android APK.
   </tr>
 </table>
 
-**Main Story — Gold Saucer**
+**Main Story: Gold Saucer**
 
 <table>
   <tr>
@@ -65,18 +65,18 @@ Runs as a web app and as a standalone Android APK.
     </td>
     <td align="center" width="25%">
       <img src="demo%20pictures/ending%20dimensions.png" width="160"/><br/>
-      <sub><b>Character dimensions</b><br/>A personality read based on your choices — MBTI tendency, alignment, decision style, risk tolerance</sub>
+      <sub><b>Character dimensions</b><br/>A personality read based on your choices: MBTI tendency, alignment, decision style, risk tolerance</sub>
     </td>
   </tr>
 </table>
 
-**Group Chat — Seventh Heaven**
+**Group Chat: Seventh Heaven**
 
 <table>
   <tr>
     <td align="center" width="25%">
       <img src="demo%20pictures/chat%201.jpg" width="160"/><br/>
-      <sub><b>Daily life</b><br/>Each character has their own thing going on — Tifa just closed the bar, Cloud is watching the sunset, Barret is fixing his arm</sub>
+      <sub><b>Daily life</b><br/>Each character has their own thing going on. Tifa just closed the bar, Cloud is watching the sunset, Barret is fixing his arm.</sub>
     </td>
     <td align="center" width="25%">
       <img src="demo%20pictures/chat%203.jpg" width="160"/><br/>
@@ -99,9 +99,9 @@ Runs as a web app and as a standalone Android APK.
 
 ### Main Story
 
-Each scene is generated fresh every run. The AI writes narration, picks which characters are present, gives one of them a line, and offers you four options — three written for the moment and one open slot where you can type anything. Your choices are remembered across scenes and shape the finale.
+Each scene is generated fresh every run. The AI writes narration, picks which characters are present, gives one of them a line, and offers you four options: three written for the moment and one open slot where you can type anything. Your choices are remembered across scenes and shape the finale.
 
-The story runs up to 9 acts. The AI tracks where you are in the arc and adjusts the tone accordingly — early scenes set things up, later ones raise the stakes. Canon relationships are respected throughout; Cloud doesn't suddenly confess his feelings in act one.
+The story runs up to 9 acts. The AI tracks where you are in the arc and adjusts the tone accordingly. Early scenes set things up, later ones raise the stakes. Canon relationships are respected throughout; Cloud doesn't suddenly confess his feelings in act one.
 
 After the finale, the Story Review screen shows a full log of your playthrough broken into three views: a transcript, a numbered list of every choice you made, and a personality read on your character based on how you played.
 
@@ -130,7 +130,7 @@ Builds as a standalone APK via EAS. No Expo Go needed on the user's end. Works i
 | Mobile framework | Expo SDK 54 / React Native 0.81 |
 | Build system | EAS Build (cloud APK) |
 | AI model | DeepSeek V3 (`deepseek-chat`) |
-| AI API | DeepSeek API — `api.deepseek.com` |
+| AI API | DeepSeek API (`api.deepseek.com`) |
 | Local storage | AsyncStorage |
 | Web preview | Expo Web (`react-native-web`) |
 | Backend (web version) | Next.js 16 on Vercel |
@@ -162,9 +162,9 @@ ff7-chronicle-mobile-starter/
 │   │   └── LifestreamLoader.js   # Loading animation
 │   │
 │   ├── lib/
-│   │   ├── api.js          # All AI calls — DeepSeek API, mock fallback
+│   │   ├── api.js          # All AI calls: DeepSeek API, mock fallback
 │   │   ├── characters.js   # Character IDs, names (zh/en), colors, initials
-│   │   ├── json.js         # safeJsonObject() — JSON parser for AI output
+│   │   ├── json.js         # safeJsonObject(): JSON parser for AI output
 │   │   ├── prompts.js      # System prompt builders for story and group chat
 │   │   └── storage.js      # AsyncStorage wrappers
 │   │
@@ -298,7 +298,7 @@ Send the link to whoever needs it. They download the file, allow installs from u
 
 Getting this working for players in mainland China took a few tries.
 
-The web version runs on Vercel and calls Anthropic's Claude API. That works fine outside China. For the mobile app, we initially pointed the APK at the same Vercel endpoint — but Vercel is blocked by the Great Firewall, so Chinese users got an immediate connection error.
+The web version runs on Vercel and calls Anthropic's Claude API. That works fine outside China. For the mobile app, we initially pointed the APK at the same Vercel endpoint, but Vercel is blocked by the Great Firewall, so Chinese users got an immediate connection error.
 
 We moved the API proxy to a Cloudflare Worker, thinking Cloudflare's global edge network would help. It didn't. The `*.workers.dev` subdomain is also commonly blocked.
 
@@ -324,7 +324,7 @@ One thing that caught us: the first APK built this way still showed mock respons
 
 ## How the Story Engine Works
 
-Each scene is one API call. The prompt asks the model to return a JSON object with a fixed schema — location, narration, speaker, dialogue, the characters present, and four options:
+Each scene is one API call. The prompt asks the model to return a JSON object with a fixed schema: location, narration, speaker, dialogue, the characters present, and four options.
 
 ```json
 {
@@ -344,9 +344,9 @@ Each scene is one API call. The prompt asks the model to return a JSON object wi
 }
 ```
 
-The `safeJsonObject()` function in `src/lib/json.js` handles cases where the model adds markdown fences or returns slightly malformed JSON — it strips the fences, finds the outermost braces, and can close truncated objects by counting open brackets. If parsing fails entirely, the screen shows an error and lets you retry the same choice.
+The `safeJsonObject()` function in `src/lib/json.js` handles cases where the model adds markdown fences or returns slightly malformed JSON. It strips the fences, finds the outermost braces, and can close truncated objects by counting open brackets. If parsing fails entirely, the screen shows an error and lets you retry the same choice.
 
-One bug we hit: early builds passed the full conversation history into each continuation call. After 2–3 scenes, the model got confused by the accumulating `Scene: ...` / `[cloud]: ...` format and started returning plain text instead of JSON. The fix was simple — the system prompt already has all the context it needs, so continuation calls now just send a bare `"Continue"` message rather than the whole history.
+One bug we hit: early builds passed the full conversation history into each continuation call. After 2–3 scenes, the model got confused by the accumulating `Scene: ...` / `[cloud]: ...` format and started returning plain text instead of JSON. The fix was simple: the system prompt already has all the context it needs, so continuation calls now just send a bare `"Continue"` message rather than the whole history.
 
 ---
 
