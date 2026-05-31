@@ -53,17 +53,21 @@ Available as a **web app** and an **Android APK**.
 
 <table>
   <tr>
-    <td align="center" width="33%">
-      <img src="demo%20pictures/chat%201.jpg" width="195"/><br/>
+    <td align="center" width="25%">
+      <img src="demo%20pictures/chat%201.jpg" width="160"/><br/>
       <sub><b>Daily life</b><br/>Each character replies in their own voice — Tifa's wiping the bar, Cloud's watching the sunset, Barret's fixing his arm</sub>
     </td>
-    <td align="center" width="33%">
-      <img src="demo%20pictures/chat%203.jpg" width="195"/><br/>
+    <td align="center" width="25%">
+      <img src="demo%20pictures/chat%203.jpg" width="160"/><br/>
       <sub><b>Relationship-aware replies</b><br/>Set Cloud as your lover and watch the whole group react — Cloud: "I'd let you if you were here." Barret: "Damn it, now I gotta hug somebody too."</sub>
     </td>
-    <td align="center" width="33%">
-      <img src="demo%20pictures/chat%202.jpg" width="195"/><br/>
+    <td align="center" width="25%">
+      <img src="demo%20pictures/chat%202.jpg" width="160"/><br/>
       <sub><b>They remember you</b><br/>Tell them you just graduated from Cornell — Cloud keeps it brief, Aerith picks flowers, Barret puts drinks on the table</sub>
+    </td>
+    <td align="center" width="25%">
+      <img src="demo%20pictures/memory%20system.jpg" width="160"/><br/>
+      <sub><b>Memory panel</b><br/>Tap the brain icon to inspect what the AI remembers — per-character entries, manually add or clear facts, refresh anytime</sub>
     </td>
   </tr>
 </table>
