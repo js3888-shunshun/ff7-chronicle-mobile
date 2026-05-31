@@ -6,11 +6,19 @@
     "preview": {
       "android": {
         "buildType": "apk"
+      },
+      "env": {
+        "EXPO_PUBLIC_DEEPSEEK_API_KEY": "sk-744565e05fdc40339f37467841d9e42b",
+        "EXPO_PUBLIC_USE_MOCK": "false"
       }
     },
     "production": {
       "android": {
         "buildType": "app-bundle"
+      },
+      "env": {
+        "EXPO_PUBLIC_DEEPSEEK_API_KEY": "sk-744565e05fdc40339f37467841d9e42b",
+        "EXPO_PUBLIC_USE_MOCK": "false"
       }
     }
   }

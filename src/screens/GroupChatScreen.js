@@ -88,8 +88,10 @@ function buildSystemPrompt({ lang, playerName, messages, memory, memoryItems, re
     return `你是现代聊天软件里的群聊模拟器。群成员：${memberNames}，以及玩家 ${playerName}。
 核心规则：
 - 像微信/Discord 群聊，一条消息 1-2 句，只有对话文字。
-- 绝对禁止：动作描写、旁白、括号说明、星号动作（*动作*）、表情包文字以外的任何非对话内容。
-- 只输出角色说的话，不输出角色做的事。
+- 严格禁止任何非对话内容：不能有动作描写、旁白、括号说明、星号动作。
+- 错误示例（绝对不能出现）：Cloud: （叹气）我知道了。/ Tifa: *看向远处* 也许吧。
+- 正确示例：Cloud: 我知道了。/ Tifa: 也许吧。
+- 只输出角色说的话，不输出角色做的事，不加任何括号或星号。
 - 根据语境选择 1-4 个最应该回应的人。
 - Sephiroth 可以偶尔出现，但不要变成热情群友。
 - 当前模式：${isRandomEvent ? '随机事件，让较少发言的人主动开启话题' : '回应玩家刚才的话'}
@@ -169,6 +171,14 @@ function normalizeGroupSpeaker(raw) {
   return null;
 }
 
+function stripActions(text) {
+  return text
+    .replace(/\*[^*\n]+\*/g, '')
+    .replace(/[（(][^）)\n]{1,30}[）)]/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .trim();
+}
+
 function parseReplies(raw) {
   const lines = String(raw || '').split('\n').map(x => x.trim()).filter(Boolean);
   const replies = [];
@@ -176,7 +186,7 @@ function parseReplies(raw) {
     const m = line.match(/^\[?([^\]:：]+)\]?[：:]\s*(.+)$/);
     if (!m) continue;
     const speaker = normalizeGroupSpeaker(m[1]);
-    const text = m[2].trim();
+    const text = stripActions(m[2].trim());
     if (speaker && text && !text.includes('{') && !text.includes('speaker')) replies.push({ speaker, text });
   }
   return replies.slice(0, 4);

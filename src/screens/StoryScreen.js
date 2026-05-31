@@ -172,6 +172,7 @@ export function StoryScreen({ lang, playerName, scene, setScene, history, setHis
   const [step, setStep] = useState(0);
   const [pendingScene, setPendingScene] = useState(null);
   const [knownCast, setKnownCast] = useState(scene?.present || []);
+  const [storyError, setStoryError] = useState('');
   const typeRef = useRef(null);
 
   function typeText(text, onDone) {
@@ -276,18 +277,20 @@ export function StoryScreen({ lang, playerName, scene, setScene, history, setHis
 
     setPhase('loading');
     setLoadingMsg(lang === 'zh' ? '生命之流涌动…' : 'The Lifestream stirs…');
+    setStoryError('');
     setOptions([]);
     setFreeMode(false);
     setFreeText('');
 
     try {
       const prompt = buildStoryPrompt({ lang, playerName, previousScene: scene, playerText, isOpening: false, step: nextStep, knownCast });
-      const raw = await callChatAPI(prompt, [...history.slice(-8), { role: 'user', content: playerText }]);
+      const raw = await callChatAPI(prompt, [{ role: 'user', content: lang === 'zh' ? '继续' : 'Continue' }]);
       let parsed;
       try { parsed = safeJsonObject(raw); } catch { parsed = null; }
       if (!parsed) {
         setPhase('options');
         setOptions(ensureFreeOption(scene?.options || [], lang));
+        setStoryError(lang === 'zh' ? '剧情生成失败，请重新选择' : 'Scene failed to load, please retry');
         return;
       }
       const sc = normalizeScene(parsed, scene?.present || ['player', 'cloud', 'tifa']);
@@ -299,6 +302,7 @@ export function StoryScreen({ lang, playerName, scene, setScene, history, setHis
     } catch (err) {
       setPhase('options');
       setOptions(ensureFreeOption(scene?.options || [], lang));
+      setStoryError(lang === 'zh' ? `连接失败，请重新选择（${err.message}）` : `Connection failed, please retry (${err.message})`);
     }
   }
 
@@ -405,7 +409,11 @@ export function StoryScreen({ lang, playerName, scene, setScene, history, setHis
       {/* Options / free input */}
       {phase === 'options' && (
         <FFPanel style={styles.optionsPanel}>
-          <Text style={styles.chooseLabel}>{lang === 'zh' ? '— 选择行动 —' : '— choose your action —'}</Text>
+          {storyError ? (
+            <Text style={styles.storyError}>⚠ {storyError}</Text>
+          ) : (
+            <Text style={styles.chooseLabel}>{lang === 'zh' ? '— 选择行动 —' : '— choose your action —'}</Text>
+          )}
           {freeMode ? (
             <View style={styles.freeBox}>
               <TextInput
@@ -474,6 +482,7 @@ const styles = StyleSheet.create({
   continueBtnText: { color: colors.cyan, fontSize: 13, letterSpacing: 1 },
   optionsPanel: { padding: 14, gap: 8, maxHeight: 300 },
   chooseLabel: { color: colors.subtext, fontSize: 11, letterSpacing: 1.2, textAlign: 'center', marginBottom: 4 },
+  storyError: { color: '#ff9090', fontSize: 12, textAlign: 'center', marginBottom: 4 },
   optionList: { gap: 8 },
   optionBtn: { borderWidth: 1, borderColor: colors.border, borderRadius: 14, padding: 13, backgroundColor: 'rgba(255,255,255,0.04)' },
   optionBtnPressed: { backgroundColor: 'rgba(99,156,255,0.15)', transform: [{ translateY: 1 }] },

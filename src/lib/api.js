@@ -1,26 +1,36 @@
-const API_BASE_URL = process.env.EXPO_PUBLIC_API_BASE_URL || 'https://ff7-chronicle-ghfyyipyc-joy-s-projects25.vercel.app';
+const DEEPSEEK_API_KEY = process.env.EXPO_PUBLIC_DEEPSEEK_API_KEY || '';
 const USE_MOCK = process.env.EXPO_PUBLIC_USE_MOCK === 'true';
 
 export async function callChatAPI(systemPrompt, messages) {
-  if (USE_MOCK || !API_BASE_URL) {
+  if (USE_MOCK || !DEEPSEEK_API_KEY) {
     await new Promise((r) => setTimeout(r, 700));
     return mockModelResponse(systemPrompt, messages);
   }
 
   const controller = new AbortController();
-  const timer = setTimeout(() => controller.abort(), 30000);
+  const timer = setTimeout(() => controller.abort(), 60000);
 
   try {
-    const res = await fetch(`${API_BASE_URL}/api/chat`, {
+    const res = await fetch('https://api.deepseek.com/chat/completions', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ systemPrompt, messages }),
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${DEEPSEEK_API_KEY}`,
+      },
+      body: JSON.stringify({
+        model: 'deepseek-chat',
+        messages: [
+          { role: 'system', content: systemPrompt },
+          ...messages,
+        ],
+        max_tokens: 2000,
+      }),
       signal: controller.signal,
     });
 
     const data = await res.json();
-    if (!res.ok || data.error) throw new Error(data.error || `HTTP ${res.status}`);
-    return data.content || '';
+    if (!res.ok || data.error) throw new Error(data.error?.message || `HTTP ${res.status}`);
+    return data.choices[0].message.content || '';
   } catch (err) {
     if (err.name === 'AbortError') throw new Error('连接超时，请检查网络或后端是否在运行');
     throw err;

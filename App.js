@@ -64,7 +64,10 @@ export default function App() {
   }, []);
 
   // Persist group data
-  useEffect(() => { if (groupMessages.length > 0) saveJSON(STORAGE_KEYS.groupMessages, groupMessages.slice(-100)); }, [groupMessages]);
+  useEffect(() => {
+    if (groupMessages.length > 1) setHasSavedChat(true);
+    if (groupMessages.length > 0) saveJSON(STORAGE_KEYS.groupMessages, groupMessages.slice(-100));
+  }, [groupMessages]);
   useEffect(() => { if (groupMemory) saveText(STORAGE_KEYS.groupMemory, groupMemory); }, [groupMemory]);
   useEffect(() => { saveJSON('ff7_group_memory_items_v1', groupMemoryItems.slice(-40)); }, [groupMemoryItems]);
   useEffect(() => { saveJSON(STORAGE_KEYS.groupRelations, relationships); }, [relationships]);
